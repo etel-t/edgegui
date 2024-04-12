@@ -927,13 +927,3 @@ def download_logfile(request):
     response = HttpResponse(logfile_content, content_type='text/plain')
     response['Content-Disposition'] = 'attachment; filename="reachwan.log"'
     return response
-
-def download_conf(request):
-    conffile_content = ''
-    if os.path.exists("/etc/vpp/bootstrap.vpp"):
-        with open("/etc/vpp/bootstrap.vpp", "r") as f:
-            conffile_content = f.read()
-            f.close()
-    response = HttpResponse(conffile_content, content_type='text/plain')
-    response['Content-Disposition'] = 'attachment; filename="conf.vpp"'
-    return response
